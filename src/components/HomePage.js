@@ -1,6 +1,8 @@
 ﻿import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { getNews } from '../actions/NewsActions';
+import { connect } from 'react-redux';
+import { addNewsList } from '../actions/redux/news';
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -23,9 +25,13 @@ class HomePage extends React.Component {
 
         getNews()
             .then(({ articles }) => {
-                if (articles)
-                    this.setState({ articles });
-                    console.log(articles);
+                if (articles) {
+                    let editedArticles = articles;
+                    editedArticles.map((article, index) => article.source.id = index);
+                    console.log(editedArticles);
+                    this.setState({ articles:editedArticles });
+                    this.props.dispatch(addNewsList(editedArticles));
+                }
                 return Promise.resolve();
             }).catch((errors) => {
                 this.setState({ errors: errors });
@@ -37,12 +43,12 @@ class HomePage extends React.Component {
         return (
             <div key={index} className="col-md-4">
                 <div className="thumbnail">
-                    <Link to={"\/\/" + article.url.slice(7)} target="_blank">
+                    <NavLink to={"/newsdetail/" + article.source.id } >
                         <img className="img-responsive img-rounded" src={article.urlToImage} />
                         <div className="caption">
                             <p>{ article.title }</p>
                         </div>
-                    </Link>
+                    </NavLink>
                 </div>
             </div>
             );
@@ -69,7 +75,7 @@ class HomePage extends React.Component {
 
     filter = (e) => {        
         let text = e.target.value.toUpperCase();        
-        console.log("Filter :: " + text);
+        //console.log("Filter :: " + text);
         let filteredArticles = this.state.articles.filter((article) => article.title.toUpperCase().match(text) ? true : false );
         this.setState({ filteredArticles, searchText: text });
     }
@@ -104,4 +110,11 @@ class HomePage extends React.Component {
     }
 }
 
-export default HomePage;
+const mapStateToProps = (state) => {
+    console.log("HOMEPAGE");
+    console.log(state);
+    return {
+    }
+};
+
+export default connect(mapStateToProps)(HomePage);

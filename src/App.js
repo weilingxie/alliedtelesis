@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import ReactDOM from 'react-dom';
 import AppRouter from './routers/AppRouter';
 import './App.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
