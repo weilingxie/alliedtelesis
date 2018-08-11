@@ -17,15 +17,15 @@ const NewsDetail = (props) => (
 );
 
 const mapStateToProps = (state, props) => {
-    //console.log(props);
+    console.log(props);
     let id = props.match.params.news_id;
-    // console.log("News Id::" + id);
-    // console.log(state);
+     console.log("News Id::" + id);
+     console.log(state.newsList);
     // console.log(state.newsList.newsList);
     //console.log(selectNews(state.newsList.newsList, id)[0]);
     
     return {
-        ...selectNews(state.newsList.newsList, id)[0]
+        ...selectNews(state.newsList, id)[0]
     }
 };
 

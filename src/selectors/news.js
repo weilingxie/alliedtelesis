@@ -1,13 +1,11 @@
 export default (newsList, id) => {
-    // console.log(newsList);
-    // console.log(id);
-    id = parseInt(id);
+
+    id = parseInt(id,10);
     if (newsList && id !== undefined && id !== null){
         return newsList.filter((news) => {
-            // console.log("news.source.id::" + news.source.id + "  Type::" + typeof news.source.id);
-            // console.log("id::" + id + "  Type::" + typeof id);
-            // console.log(news.source.id === id);
             const idMatch = news.source.id === id;
+            if (idMatch)
+                console.log(newsList[id]);
         
             return idMatch;
         });

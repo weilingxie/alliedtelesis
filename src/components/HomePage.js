@@ -111,8 +111,6 @@ class HomePage extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("HOMEPAGE");
-    console.log(state);
     return {
     }
 };

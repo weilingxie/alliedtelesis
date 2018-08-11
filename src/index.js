@@ -5,9 +5,19 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from './store/configureStore';
+import { saveState, loadState } from './store/loadStorage';
+import { addNewsList } from './actions/redux/news';
 
 const store = configureStore();
 
+store.subscribe(() => {
+    saveState({
+        newsList:store.getState().newsList});
+});
+
+store.dispatch(addNewsList(loadState));
+console.log("INDEX.JS");
+console.log(store.getState());
 const jsx = (
     <Provider store={store}>
         <App />
