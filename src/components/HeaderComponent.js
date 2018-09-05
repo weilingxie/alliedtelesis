@@ -35,7 +35,11 @@ class HeaderComponent extends React.Component {
                         </div>
                         <ul className="nav navbar-nav col-lg-3">
                             <li className="active"><a href="#">Home</a></li>
-                            <li><a href="#">Page 1</a></li>
+                            <li>
+                                <Link to="/home1" className="navbar-left">
+                                    Page 1
+                                </Link>
+                                </li>
                             <li><a href="#">Page 2</a></li>
                         </ul>                        
                         <ul className="nav navbar-nav navbar-right col-sm-3 col-md-2 col-lg-2 col-xl-2">

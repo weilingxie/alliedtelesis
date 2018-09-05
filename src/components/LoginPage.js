@@ -44,7 +44,7 @@ class LoginPage extends React.Component {
 
     render() {
         return (
-            <div className="container" style={{ marginTop: 50 }}>
+            <div className="container page" style={{ marginTop: 50 }}>
                 <div className="row">
                     <div className="col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4 col-xl-4 col-xl-offset-4">
                         <form onSubmit={(e) => { e.preventDefault(); this.login(); }}>
