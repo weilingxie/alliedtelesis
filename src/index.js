@@ -17,8 +17,8 @@ store.subscribe(() => {
 });
 
 store.dispatch(addNewsList(loadState));
-console.log("INDEX.JS");
-console.log(store.getState());
+// console.log("INDEX.JS");
+// console.log(store.getState());
 const jsx = (
     <BrowserRouter>
         <Provider store={store}>
